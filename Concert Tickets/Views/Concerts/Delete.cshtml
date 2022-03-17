@@ -1,0 +1,88 @@
+﻿@model Concert_Tickets.Models.Concert
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Concert</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Artist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloorTickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloorTickets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloorTicketPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloorTicketPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PitTickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PitTickets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PitTicketPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PitTicketPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.countFloor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countFloor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.countPit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countPit)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

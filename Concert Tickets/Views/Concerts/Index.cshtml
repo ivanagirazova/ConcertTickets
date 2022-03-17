@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Concert_Tickets.Models.Concert>
+
+@{
+    ViewBag.Title = "Upcoming Concerts";
+}
+
+<h2>Upcoming Concerts</h2>
+
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        @Html.ActionLink("Add A Concert", "Create")
+    </p>
+}
+
+<table id="concertsTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FloorTicketPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PitTicketPrice)
+            </th>
+            @if (User.IsInRole("User"))
+            {
+                <th></th>
+            }
+            @if (User.IsInRole("Administrator"))
+            {
+                <th></th>
+
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FloorTicketPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PitTicketPrice)
+                </td>
+                @if (User.IsInRole("User"))
+                {
+                    <td>
+                        @{
+                            if (item.countFloor + item.countPit == 0)
+                            {
+                                <strong><em>SOLD OUT!</em></strong>
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Buy Ticket", "BuyTicket", new { id = item.ID })
+                            }
+
+                        }
+                    </td>
+                }
+                @if (User.IsInRole("Administrator"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        <button data-concert-id="@item.ID" class="btn-link js-delete">Delete</button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var table = $("#concertsTable").DataTable();
+            $("#concertsTable .js-delete").on("click", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete the concert?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/Concerts/Delete/" + button.attr("data-concert-id"),
+                            method: "GET",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            },
+                            error: function (error) {
+                                console.log(error);
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+}

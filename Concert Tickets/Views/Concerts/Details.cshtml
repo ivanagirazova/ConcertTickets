@@ -1,0 +1,82 @@
+﻿@model Concert_Tickets.Models.Concert
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Concert</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Artist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloorTickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloorTickets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FloorTicketPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FloorTicketPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PitTickets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PitTickets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PitTicketPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PitTicketPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.countFloor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countFloor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.countPit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countPit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center"><em>WELCOME TO CONCERT TICKETS!</em></h1>
+    <p class="lead"><strong>This is the official site of Venue "Skopje Live Staduim", where you can purchase tickets to our upcoming concerts online.</strong></p>
+    <p class="lead"></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2 class="text-center">What's coming?</h2>
+        <p class="text-justify">
+            Check out all of the upcoming concerts with just one click here!
+        </p>
+        <p><input type="button" class="btn btn-default center-block" value="Upcoming Concerts" onclick="link()" /></p>
+    </div>
+    <div class="col-md-4">
+        <h2 class="text-center">Get your tickets now!</h2>
+        <p class="text-justify">Dont feel like going out to the nearest store? Log in and check if there are available ticket for the concert you wish to attend, and buy them in just a few minutes!</p>
+        <p><input type="button" class="btn btn-default center-block" value="Log in" onclick="register()" /></p>
+    </div>
+    <div class="col-md-4">
+        <h2 class="text-center">Register Now!</h2>
+        <p class="text-justify">Don't have an account yet? Click here to register right now!</p>
+        <p><input type="button" class="btn btn-default center-block" value="Register" onclick="register()" /></p>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-md-2">
+
+    </div>
+
+    <div class="col-md-4">
+        <h2 class="text-center">About Us</h2>
+        <p class="text-justify">
+            Find out more information about "Skopje Live Stadium" on the link below.
+        </p>
+        <p><input type="button" class="btn btn-default center-block" value="About us" onclick="about()" /></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2 class="text-center">Contact Us</h2>
+        <p class="text-justify">
+            You can find our social media and contact information here.
+        </p>
+        <p><input type="button" class="btn btn-default center-block" value="Contact" onclick="about()" /></p>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function link() {
+            window.location.href = "@Url.Action("Index","Concerts")";
+        }
+        function login() {
+            window.location.href = "@Url.Action("Login","Account")";
+        }
+        function register() {
+            window.location.href = "@Url.Action("Register","Account")";
+        }
+        function about() {
+            window.location.href = "@Url.Action("About","Home")";
+        }
+        function contact() {
+            window.location.href = "@Url.Action("Contact","Home")";
+        }
+    </script>
+    <style>
+        .jumbotron {
+            background-color: aquamarine;
+        }
+        
+    </style>
+} 
